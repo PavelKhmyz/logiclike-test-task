@@ -13,7 +13,7 @@ export const CourseCard = ({
 }: ICourseCard): JSX.Element => {
   return (
     <div className={className} style={{ backgroundColor: bgColor }}>
-      <img src={imgSource} />
+      <img src={imgSource} alt={title}/>
       <p>{title}</p>
     </div>
   );

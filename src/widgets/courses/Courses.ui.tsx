@@ -1,5 +1,6 @@
 import { CourseCard } from 'src/entities/course-card';
 import { useAppSelector } from 'src/shared/lib';
+import { LinkButton } from 'src/shared/ui/link-button';
 
 export const Courses = () => {
   const { filteredCourses } = useAppSelector(state => state.courses);
@@ -10,13 +11,14 @@ export const Courses = () => {
         && filteredCourses.map((
           course,
         ) => 
-          <CourseCard 
-            imgSource={ course.image } 
-            title={ course.name }  
-            bgColor={ course.bgColor }
-            key={ course.id }
-            className='courseCardContainer'
-          />,
+          <LinkButton id={course.id} bgColor={course.bgColor} key={course.id}>
+            <CourseCard 
+              imgSource={course.image} 
+              title={course.name}  
+              bgColor={course.bgColor}
+              className='courseCardContainer'
+            />
+          </LinkButton>,
         )
       }
     </div>

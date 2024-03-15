@@ -13,7 +13,7 @@ export const FiltersBlock = () => {
   return (
     <>
       <RadioButton 
-        onChange={ handleApplyFilter } 
+        onChange={handleApplyFilter} 
         className='filterButton'
         name='filtersBlock'
         defaultChecked
@@ -23,11 +23,11 @@ export const FiltersBlock = () => {
       {tags 
         && tags.map(
           tag => <RadioButton 
-            onChange={ handleApplyFilter } 
+            onChange={handleApplyFilter} 
             className='filterButton'
             name='filtersBlock'
-            text={ tag }
-            value={ tag }
+            text={tag}
+            value={tag}
             key={tag}            
           />,
         )

@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, CreateAxiosDefaults } from 'axios';
 
-export default class BaseAxiosModule {
+export default class AxiosModule {
   protected readonly axiosInstance: AxiosInstance;
   private readonly defaultOptions: CreateAxiosDefaults;
 
@@ -9,6 +9,7 @@ export default class BaseAxiosModule {
 
     this.defaultOptions = {
       baseURL: environment.VITE_API_URL,
+      timeout: 1000 * 5,
     };
 
     this.axiosInstance = axios.create(

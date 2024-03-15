@@ -23,37 +23,50 @@ const coursesSlice = createSlice({
   reducers: {
     filter (state, action) {
       if (!action.payload) {
-        state.filteredCourses = state.apiResponse;
-      } else {
-        state.filteredCourses = state.apiResponse?.filter(
+        return {
+          ...state,
+          filteredCourses: state.apiResponse,
+        };
+      }
+
+      return {
+        ...state,
+        filteredCourses: state.apiResponse?.filter(
           el => el.tags.includes(action.payload),
-        );
-      }      
+        ),
+      };   
     },
   },
   extraReducers (builder) {
     builder
       .addCase(getCourses.pending, (state) => {
-        state.loading = true;
-        
-        delete state.error;
+        return {
+          ...state,
+          loading: true,        
+          error: undefined,
+        };
       })
 
       .addCase(getCourses.fulfilled, (state, action) => {
-        state.loading = false;
-        state.apiResponse = action.payload.data;
-        state.filteredCourses = action.payload.data;
+        const tagsArr: string[] = [];        
 
-        const tagsArr: string[] = [];
+        state.apiResponse?.forEach(el => el.tags.forEach(e => tagsArr.push(e)));
 
-        state.apiResponse.forEach(el => el.tags.forEach(e => tagsArr.push(e)));
-
-        state.tags = tagsArr.filter((el, ind) => ind === tagsArr.indexOf(el));
+        return {
+          ...state,
+          loading: false,
+          apiResponse: action.payload.data,
+          filteredCourses: action.payload.data,
+          tags: tagsArr.filter((el, ind) => ind === tagsArr.indexOf(el)),
+        };
       })
 
       .addCase(getCourses.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
+        return {
+          ...state,
+          loading: false,
+          error: action.error.message,
+        };
       });
   },
 });

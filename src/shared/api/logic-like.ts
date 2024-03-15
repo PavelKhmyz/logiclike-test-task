@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import BaseAxiosModule from './base-axios-module';
+import AxiosModule from './axios-module';
 
 export interface ICourse {
   name: string;
@@ -13,14 +13,13 @@ export interface ILogicLikeApi {
   getCourses (): Promise<AxiosResponse<ICourse[], any>>
 }
 
-class LogicLikeApi extends BaseAxiosModule implements ILogicLikeApi {
+class LogicLikeApi extends AxiosModule implements ILogicLikeApi {
   constructor () {
     super();
   }
 
   public async getCourses(): Promise<AxiosResponse<ICourse[], any>> {
-    const response = await this.axiosInstance.get('/courses.json');
-    return response;
+    return await this.axiosInstance.get('/courses.json');
   }
 }
 
