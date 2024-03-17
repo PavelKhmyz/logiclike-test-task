@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 export interface IButton {
@@ -10,7 +11,7 @@ export interface IButton {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const RadioButton = ({ 
+export const RadioButton = memo(({ 
   text,
   className,
   name,
@@ -34,4 +35,4 @@ export const RadioButton = ({
       </label>
     </div>
   );
-};
+});

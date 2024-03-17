@@ -8,12 +8,14 @@ import { MoonLoader } from 'react-spinners';
 
 export const CoursesPage = () => {
   const dispatch = useAppDispatch();
-  const { error, loading } = useAppSelector(state => state.courses);
+  const { error, loading, apiResponse } = useAppSelector(state => state.courses);
 
   useEffect(() => {
-    dispatch(getCourses());
-  }, [dispatch]);
-  
+    if(!apiResponse) {
+      dispatch(getCourses());
+    }
+  }, [apiResponse, dispatch]);
+
   return (
     <>
       { loading && <MoonLoader /> }
@@ -23,7 +25,7 @@ export const CoursesPage = () => {
           <Courses /> 
           <Filters />
         </>
-      }      
+      }
     </>
   );
 };
