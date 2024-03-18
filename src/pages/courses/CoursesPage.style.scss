@@ -1,0 +1,20 @@
+.coursesPage {
+  padding: 24px;
+  display: flex;
+  min-height: 500px;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: center;
+  font-weight: 800;
+  color: #39414B;
+
+  .loader {
+    align-self: center;
+  }
+
+  .coursesError {
+    p {
+      color: red;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { ErrorNotification } from 'src/shared/ui/error-notification';
 import { Courses } from 'src/widgets/courses';
 import { Filters } from 'src/widgets/filters';
 import { MoonLoader } from 'react-spinners';
+import './CoursesPage.style.scss';
 
 export const CoursesPage = () => {
   const dispatch = useAppDispatch();
@@ -17,15 +18,14 @@ export const CoursesPage = () => {
   }, [apiResponse, dispatch]);
 
   return (
-    <>
-      { loading && <MoonLoader /> }
-      { error  
-        ? <ErrorNotification message={error} className='coursesError'/> 
-        : <>
-          <Courses /> 
-          <Filters />
-        </>
+    <div className='coursesPage'>
+      { loading && <MoonLoader className='loader'/> }
+      { error && <ErrorNotification message={error} className='coursesError'/> }
+      { apiResponse && <>
+        <Filters />
+        <Courses /> 
+      </>
       }
-    </>
+    </div>
   );
 };

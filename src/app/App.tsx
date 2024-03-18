@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ComingSoonPage } from 'src/pages/coming-soon-page';
 import { CoursesPage } from 'src/pages/courses';
-
+import './App.style.scss';
 function App() {
   return (
     <BrowserRouter>

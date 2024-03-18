@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { CourseCard } from 'src/entities/course-card';
 import { useAppSelector } from 'src/shared/lib';
+import './Courses.style.scss';
 
 export const Courses = memo(() => {
   const { filteredCourses } = useAppSelector(state => state.courses);

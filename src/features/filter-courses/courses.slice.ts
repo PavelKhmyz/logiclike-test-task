@@ -4,7 +4,6 @@ import { ICourse, logicLikeApi } from 'src/shared/api';
 export interface ICoursesState {
   apiResponse?: ICourse[];
   filteredCourses?: ICourse[];
-  tags?: string[],
   loading: boolean;
   error?: string;  
 }
@@ -57,7 +56,6 @@ const coursesSlice = createSlice({
           loading: false,
           apiResponse: action.payload.data,
           filteredCourses: action.payload.data,
-          tags: tagsArr.filter((el, ind) => ind === tagsArr.indexOf(el)),
         };
       })
 
