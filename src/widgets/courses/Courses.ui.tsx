@@ -1,11 +1,10 @@
-import { memo } from 'react';
 import { CourseCard } from 'src/entities/course-card';
 import { useAppSelector } from 'src/shared/lib';
 import './Courses.style.scss';
 
-export const Courses = memo(() => {
+export const Courses = () => {
   const { filteredCourses } = useAppSelector(state => state.courses);
-  
+
   return (
     <div className='coursesWrapper'>
       { filteredCourses 
@@ -23,4 +22,4 @@ export const Courses = memo(() => {
       }
     </div>
   );
-});
+};
